@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Martín Rotela | Abogado Penalista — CABA y GBA</title>
+<meta name="description" content="Estudio jurídico Dr. Martín Rotela & Asociados. Abogado penalista en CABA y GBA. Excarcelaciones, arresto domiciliario, querellas, ciberdelitos. Urgencias penales las 24 horas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0a1826;
+    --navy-800:#122b42;
+    --navy-700:#1b3a56;
+    --gold-500:#b8935a;
+    --gold-300:#d9c19a;
+    --gold-600:#96723f;
+    --beige-100:#f5f0e6;
+    --beige-200:#ece3d0;
+    --ink-900:#1c1a16;
+    --ink-600:#5a5346;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'DM Sans', sans-serif;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink-900);
+    background:var(--beige-100);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; letter-spacing:.01em;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:18px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  header.scrolled{
+    background:var(--navy-950);
+    padding:12px 0;
+    box-shadow:0 6px 24px rgba(10,24,38,.25);
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .monogram{
+    width:46px; height:46px; border-radius:50%;
+    border:1.5px solid var(--gold-500);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; overflow:hidden;
+    background:#16314f;
+  }
+  .monogram img{width:100%; height:100%; object-fit:cover; transform:scale(1.35);}
+  .brand-text{color:var(--beige-100);}
+  .brand-text .name{font-family:var(--serif); font-size:19px; font-weight:600; letter-spacing:.02em; line-height:1.1;}
+  .brand-text .tag{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-300); margin-top:2px;}
+
+  nav ul{display:flex; gap:34px;}
+  nav a{
+    color:var(--beige-100); font-size:14.5px; letter-spacing:.02em;
+    position:relative; padding:4px 0;
+  }
+  nav a::after{
+    content:''; position:absolute; bottom:0; left:0; width:0; height:1px;
+    background:var(--gold-500); transition:width .3s ease;
+  }
+  nav a:hover::after{width:100%;}
+
+  .hamburger{
+    display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;
+  }
+  .hamburger span{width:24px; height:2px; background:var(--beige-100);}
+
+  .mobile-menu{
+    display:none; position:fixed; inset:0; z-index:99; background:var(--navy-950);
+    flex-direction:column; align-items:center; justify-content:center; gap:32px;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{color:var(--beige-100); font-family:var(--serif); font-size:26px;}
+  .mobile-close{position:absolute; top:22px; right:28px; background:none; border:none; color:var(--beige-100); font-size:28px; cursor:pointer;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; min-height:100vh;
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(184,147,90,.14), transparent 55%),
+      linear-gradient(160deg, var(--navy-950) 0%, #0d2033 55%, var(--navy-800) 100%);
+    display:flex; align-items:center; overflow:hidden;
+    padding:140px 0 80px;
+  }
+  .hero::before{
+    content:''; position:absolute; inset:0; opacity:.5; pointer-events:none;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(217,193,154,.035) 0px, rgba(217,193,154,.035) 1px, transparent 1px, transparent 88px);
+  }
+  .hero-grid{
+    position:relative; z-index:2; display:grid; grid-template-columns:1.15fr .85fr; gap:60px; align-items:center;
+  }
+  .hero-eyebrow{
+    color:var(--gold-300); font-size:12.5px; letter-spacing:.22em; text-transform:uppercase; margin-bottom:22px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .hero-eyebrow .line{width:36px; height:1px; background:var(--gold-500);}
+  .hero h1{
+    color:var(--beige-100); font-size:clamp(38px, 5.2vw, 64px); line-height:1.06; font-weight:600;
+  }
+  .hero h1 em{color:var(--gold-300); font-style:italic;}
+  .hero p.lede{
+    color:#c8d0da; font-size:17px; max-width:520px; margin-top:26px; line-height:1.7;
+  }
+  .hero-cta{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; font-size:14.5px; font-weight:500; letter-spacing:.03em;
+    border-radius:2px; transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    cursor:pointer; border:1px solid transparent;
+  }
+  .btn-gold{background:var(--gold-500); color:var(--navy-950);}
+  .btn-gold:hover{background:var(--gold-300); transform:translateY(-2px); box-shadow:0 10px 26px rgba(184,147,90,.25);}
+  .btn-ghost{border-color:rgba(245,240,230,.35); color:var(--beige-100);}
+  .btn-ghost:hover{border-color:var(--gold-300); color:var(--gold-300);}
+
+  .hero-seal{
+    position:relative; display:flex; align-items:center; justify-content:center;
+  }
+  .seal-ring{
+    width:280px; height:280px; border-radius:50%;
+    border:1px solid rgba(217,193,154,.3);
+    display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .seal-ring::before{
+    content:''; position:absolute; inset:18px; border-radius:50%; border:1px solid rgba(217,193,154,.18);
+  }
+  .seal-inner{
+    width:190px; height:190px; border-radius:50%;
+    background:#16314f;
+    border:1px solid var(--gold-500);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .seal-inner img{width:78%; height:auto;}
+
+  /* ---------- Urgency ribbon (signature element) ---------- */
+  .ribbon{
+    background:var(--navy-950); border-top:1px solid rgba(184,147,90,.35); border-bottom:1px solid rgba(184,147,90,.35);
+    padding:20px 0; overflow:hidden;
+  }
+  .ribbon .wrap{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; text-align:center;}
+  .ribbon .clock{color:var(--gold-300); flex-shrink:0;}
+  .ribbon p{
+    color:var(--beige-100); font-size:14px; letter-spacing:.03em;
+  }
+  .ribbon strong{color:var(--gold-300); font-weight:700;}
+
+  /* ---------- Section shared ---------- */
+  section{padding:100px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .eyebrow{
+    color:var(--gold-600); font-size:12px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  .section-head h2{font-size:clamp(30px,3.6vw,42px); color:var(--navy-950);}
+  .section-head p{color:var(--ink-600); margin-top:16px; font-size:16px; max-width:520px;}
+
+  .fade-up{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- Areas ---------- */
+  .areas{background:var(--beige-100);}
+  .area-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .area-card{
+    background:var(--beige-200); border:1px solid rgba(28,26,22,.08);
+    padding:38px 30px; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .area-card:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(10,24,38,.1); border-color:var(--gold-500);}
+  .area-icon{
+    width:52px; height:52px; border-radius:50%; background:var(--navy-950);
+    display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+  }
+  .area-icon svg{width:24px; height:24px; stroke:var(--gold-300);}
+  .area-card h3{font-size:22px; color:var(--navy-950); margin-bottom:12px;}
+  .area-card p{color:var(--ink-600); font-size:14.5px; line-height:1.7;}
+  .area-card .tag-urgent{
+    display:inline-block; margin-top:16px; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--gold-600); border-top:1px solid rgba(28,26,22,.12); padding-top:14px;
+  }
+
+  /* ---------- About ---------- */
+  .about{background:var(--navy-950); color:var(--beige-100);}
+  .about-grid{display:grid; grid-template-columns:.75fr 1.25fr; gap:64px; align-items:center;}
+  .photo-frame{
+    width:100%; aspect-ratio:4/5; border:1px solid var(--gold-500); position:relative;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(160deg, var(--navy-800), var(--navy-950));
+  }
+  .photo-frame::before{
+    content:''; position:absolute; inset:14px; border:1px solid rgba(217,193,154,.3);
+  }
+  .photo-frame .ph-icon{color:rgba(217,193,154,.5);}
+  .photo-frame .ph-label{
+    position:absolute; bottom:26px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#8fa0b0;
+  }
+  .about h2{color:var(--beige-100); font-size:clamp(28px,3.4vw,38px); margin-bottom:22px;}
+  .about p{color:#c8d0da; font-size:16px; margin-bottom:18px; line-height:1.8;}
+  .credentials{margin-top:30px; display:flex; flex-direction:column; gap:12px;}
+  .credentials li{
+    display:flex; gap:12px; align-items:flex-start; font-size:14.5px; color:#d7dee5;
+  }
+  .credentials svg{width:16px; height:16px; stroke:var(--gold-300); flex-shrink:0; margin-top:3px;}
+  .cta-line{margin-top:32px; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--gold-300);}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--beige-200);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .contact-info h2{font-size:clamp(28px,3.4vw,38px); color:var(--navy-950); margin-bottom:18px;}
+  .contact-info p{color:var(--ink-600); margin-bottom:32px; font-size:15.5px;}
+  .contact-links{display:flex; flex-direction:column; gap:18px;}
+  .contact-links a{
+    display:flex; align-items:center; gap:14px; font-size:15px; color:var(--navy-950); font-weight:500;
+    padding-bottom:14px; border-bottom:1px solid rgba(28,26,22,.12); transition:color .25s ease, padding-left .25s ease;
+  }
+  .contact-links a:hover{color:var(--gold-600); padding-left:6px;}
+  .contact-links svg{width:19px; height:19px; stroke:var(--gold-600); flex-shrink:0;}
+
+  form{display:flex; flex-direction:column; gap:16px;}
+  label{font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-600); margin-bottom:6px; display:block;}
+  input, textarea{
+    width:100%; padding:13px 14px; border:1px solid rgba(28,26,22,.2); background:var(--beige-100);
+    font-family:var(--sans); font-size:14.5px; color:var(--ink-900); border-radius:2px;
+  }
+  input:focus, textarea:focus{outline:2px solid var(--gold-500); outline-offset:1px; border-color:var(--gold-500);}
+  textarea{resize:vertical; min-height:120px;}
+  .form-note{font-size:12.5px; color:var(--ink-600); margin-top:-4px;}
+  button[type="submit"]{
+    background:var(--navy-950); color:var(--beige-100); border:none; padding:16px 28px;
+    font-size:14.5px; letter-spacing:.03em; cursor:pointer; transition:background .25s ease;
+    margin-top:6px;
+  }
+  button[type="submit"]:hover{background:var(--navy-700);}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-950); color:#8fa0b0; padding:48px 0 32px;}
+  footer .wrap{display:flex; flex-direction:column; gap:18px; align-items:center; text-align:center;}
+  footer .f-name{font-family:var(--serif); font-size:20px; color:var(--beige-100);}
+  footer .f-matriculas{font-size:12.5px; line-height:1.8;}
+  footer .f-year{font-size:12px; color:#5f7284; margin-top:6px;}
+
+  /* ---------- WhatsApp floating button ---------- */
+  .wa-float{
+    position:fixed; bottom:26px; right:26px; z-index:90;
+    width:60px; height:60px; border-radius:50%;
+    background:#1fae5c; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    transition:transform .25s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:30px; height:30px; fill:#fff;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    nav{display:none;}
+    .hamburger{display:flex;}
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero-eyebrow{justify-content:center;}
+    .hero-cta{justify-content:center;}
+    .hero p.lede{margin-left:auto; margin-right:auto;}
+    .hero-seal{margin-top:20px;}
+    .area-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .photo-frame{max-width:280px; margin:0 auto;}
+    .contact-grid{grid-template-columns:1fr; gap:44px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <div class="brand">
+      <div class="monogram"><img src="logo-mark.png" alt="Escudo Dr. Martín Rotela"></div>
+      <div class="brand-text">
+        <div class="name">Dr. Martín Rotela</div>
+        <div class="tag">Abogado Penalista</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#areas">Áreas</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileCloseBtn" aria-label="Cerrar menú">✕</button>
+  <a href="#inicio">Inicio</a>
+  <a href="#areas">Áreas</a>
+  <a href="#sobre-mi">Sobre mí</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow"><span class="line"></span> Estudio Jurídico · CABA y GBA</div>
+      <h1>Representación legal firme.<br><em>Resultados concretos.</em></h1>
+      <p class="lede">Abogado penalista matriculado (T° 156 F° 452 — CPACF). Integrante del equipo técnico-jurídico del Dr. Marcelo Biondi. Excarcelaciones, arresto domiciliario, querellas y particular damnificado, ciberdelitos — con compromiso, seriedad y amplia reserva desde la primera consulta.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="https://wa.me/5491133304910?text=Hola%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20necesito%20hacer%20una%20consulta." target="_blank" rel="noopener">
+          Consultar por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#areas">Ver áreas de práctica</a>
+      </div>
+    </div>
+    <div class="hero-seal">
+      <div class="seal-ring">
+        <div class="seal-inner">
+          <img src="logo-mark.png" alt="Escudo Dr. Martín Rotela">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon fade-up">
+  <div class="wrap">
+    <svg class="clock" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <p>Urgencias penales — atención las <strong>24 horas</strong>. Excarcelaciones y arresto domiciliario con respuesta inmediata.</p>
+  </div>
+</div>
+
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Áreas de práctica</span>
+      <h2>Dónde puedo ayudarte</h2>
+      <p>Cada caso recibe análisis estratégico y preparación técnica rigurosa, desde la primera consulta hasta la resolución.</p>
+    </div>
+    <div class="area-grid">
+      <div class="area-card fade-up">
+        <div class="area-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 7l-3 6a3 3 0 0 0 6 0l-3-6ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6ZM3 7h18M8 3h8"/></svg>
+        </div>
+        <h3>Derecho Penal</h3>
+        <p>Excarcelaciones, arresto domiciliario, casos de abusos, estafas, querellas y particular damnificado, ciberdelitos. Defensa técnica y estratégica en cada instancia del proceso.</p>
+        <span class="tag-urgent">Urgencias las 24 hs</span>
+      </div>
+      <div class="area-card fade-up">
+        <div class="area-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>
+        </div>
+        <h3>Derecho Laboral</h3>
+        <p>Despidos, liquidaciones e indemnizaciones, reclamos por incumplimiento y negociación con empleadores. Acompañamiento en cada etapa del reclamo.</p>
+      </div>
+      <div class="area-card fade-up">
+        <div class="area-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z"/></svg>
+        </div>
+        <h3>A.R.T.</h3>
+        <p>Accidentes de trabajo y enfermedades profesionales. Reclamos por incapacidad, rechazos de aseguradora y gestión integral del proceso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="photo-frame fade-up">
+      <svg class="ph-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      <span class="ph-label">Foto de perfil</span>
+    </div>
+    <div class="fade-up">
+      <span class="eyebrow" style="color:var(--gold-300)">Sobre mí</span>
+      <h2>Dr. Martín Rotela</h2>
+      <p>Abogado egresado de la Universidad de Buenos Aires — Facultad de Derecho (2024), matriculado en el CPACF (T° 156 F° 452), C.A.M (T° 17 F° 35) y con Matrícula Federal (T° 712 F° 132).</p>
+      <p>Cuento con amplia experiencia en Derecho Penal, integrando el equipo técnico-jurídico del Dr. Marcelo Biondi: excarcelaciones, arresto domiciliario, casos de abusos, estafas, querellas y particular damnificado, y ciberdelitos. Trabajo con compromiso y seriedad, respeto por cada cliente y su caso particular, y amplia reserva profesional.</p>
+      <ul class="credentials">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> CPACF — T° 156 F° 452</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> C.A.M — T° 17 F° 35</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> Matrícula Federal — T° 712 F° 132</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> UBA — Facultad de Derecho, 2024</li>
+      </ul>
+      <p class="cta-line">¿Tenés una consulta? Escribime hoy y te respondo en el día.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="contact-info fade-up">
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos de tu caso</h2>
+      <p>Atención en CABA y GBA, de forma presencial y virtual. Urgencias penales las 24 horas.</p>
+      <div class="contact-links">
+        <a href="https://wa.me/5491133304910?text=Hola%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20necesito%20hacer%20una%20consulta." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+          WhatsApp — +54 9 11 3330-4910
+        </a>
+        <a href="mailto:estudiojuridicorotela@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          estudiojuridicorotela@gmail.com
+        </a>
+        <a href="https://instagram.com/martinrotela.abogado" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          @martinrotela.abogado
+        </a>
+      </div>
+    </div>
+    <form action="https://formspree.io/f/TU_ID_AQUI" method="POST" class="fade-up">
+      <div>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono">
+      </div>
+      <div>
+        <label for="mensaje">Contame tu consulta</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+      </div>
+      <p class="form-note">Los datos enviados llegan directamente al email del estudio.</p>
+      <button type="submit">Enviar consulta</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-name">Dr. Martín Rotela & Asociados</div>
+    <div class="f-matriculas">CPACF T° 156 F° 452 · C.A.M T° 17 F° 35 · Matrícula Federal T° 712 F° 132</div>
+    <div class="f-year">© 2026 — Todos los derechos reservados</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5491133304910?text=Hola%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20necesito%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2Zm5.8 14.13c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.73-2.11 1-2.4c.24-.26.53-.33.71-.33.18 0 .35 0 .5.01.16.01.38-.06.6.45.24.57.79 1.98.86 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.18 1.53 1.91 1.05.94 1.94 1.24 2.21 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.61-.18 1.29Z"/></svg>
+</a>
+
+<script>
+  // Header background on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+  hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileCloseBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

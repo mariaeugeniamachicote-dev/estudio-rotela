@@ -36,6 +36,12 @@
   },
   "areaServed": ["CABA", "GBA", "Provincia de Buenos Aires"],
   "priceRange": "$$",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "10:00",
+    "closes": "17:00"
+  },
   "sameAs": ["https://instagram.com/martinrotela.abogado"],
   "knowsAbout": ["Derecho Penal", "Derecho Laboral", "A.R.T.", "Excarcelaciones", "Arresto domiciliario", "Querellas", "Ciberdelitos"]
 }
@@ -132,14 +138,23 @@
   /* ---------- Hero ---------- */
   .hero{
     position:relative; min-height:100vh;
-    background:
-      radial-gradient(ellipse at 20% -10%, rgba(184,147,90,.14), transparent 55%),
-      linear-gradient(160deg, var(--navy-950) 0%, #0d2033 55%, var(--navy-800) 100%);
     display:flex; align-items:center; overflow:hidden;
     padding:140px 0 80px;
   }
+  .hero .bg-photo{
+    position:absolute; inset:0;
+    background-image:url('tribunales-hero.jpg');
+    background-size:cover; background-position:center 15%;
+    transform:scale(1.05);
+  }
+  .hero .bg-overlay{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(184,147,90,.14), transparent 55%),
+      linear-gradient(160deg, rgba(10,24,38,.93) 0%, rgba(13,32,51,.91) 55%, rgba(18,43,66,.93) 100%);
+  }
   .hero::before{
-    content:''; position:absolute; inset:0; opacity:.5; pointer-events:none;
+    content:''; position:absolute; inset:0; opacity:.5; pointer-events:none; z-index:1;
     background-image:
       repeating-linear-gradient(90deg, rgba(217,193,154,.035) 0px, rgba(217,193,154,.035) 1px, transparent 1px, transparent 88px);
   }
@@ -380,11 +395,13 @@
 </div>
 
 <section class="hero" id="inicio">
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
   <div class="wrap hero-grid">
     <div>
       <div class="hero-eyebrow"><span class="line"></span> Estudio Jurídico · CABA y GBA</div>
       <h1>Representación legal firme.<br><em>Resultados concretos.</em></h1>
-      <p class="lede">Abogado penalista matriculado (T° 156 F° 452 — CPACF). Integrante del equipo técnico-jurídico del Dr. Marcelo Biondi. Excarcelaciones, arresto domiciliario, querellas y particular damnificado, ciberdelitos — con compromiso, seriedad y amplia reserva desde la primera consulta.</p>
+      <p class="lede">Abogado penalista matriculado en el CPACF. Integrante del equipo técnico-jurídico del Dr. Marcelo Biondi. Excarcelaciones, arresto domiciliario, querellas y particular damnificado, ciberdelitos — con compromiso, seriedad y amplia reserva desde la primera consulta.</p>
       <div class="hero-cta">
         <a class="btn btn-gold" href="https://wa.me/5491133304910?text=Hola%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20necesito%20hacer%20una%20consulta." target="_blank" rel="noopener">
           Consultar por WhatsApp
@@ -451,13 +468,13 @@
     <div class="fade-up">
       <span class="eyebrow" style="color:var(--gold-300)">Sobre mí</span>
       <h2>Dr. Martín Rotela</h2>
-      <p>Abogado egresado de la Universidad de Buenos Aires — Facultad de Derecho (2024), matriculado en el CPACF (T° 156 F° 452), C.A.M (T° 17 F° 35) y con Matrícula Federal (T° 712 F° 132).</p>
-      <p>Cuento con amplia experiencia en Derecho Penal, integrando el equipo técnico-jurídico del Dr. Marcelo Biondi: excarcelaciones, arresto domiciliario, casos de abusos, estafas, querellas y particular damnificado, y ciberdelitos. Trabajo con compromiso y seriedad, respeto por cada cliente y su caso particular, y amplia reserva profesional.</p>
+      <p>Abogado egresado de la Universidad de Buenos Aires — Facultad de Derecho, matriculado en el CPACF, C.A.M y con Matrícula Federal.</p>
+      <p>Cuento con amplia experiencia en Derecho Penal, integrando además el equipo técnico-jurídico del Dr. Marcelo Biondi: excarcelaciones, arresto domiciliario, casos de abusos, estafas, querellas y particular damnificado, y ciberdelitos. Trabajo con compromiso y seriedad, respeto por cada cliente y su caso particular, y amplia reserva profesional.</p>
       <ul class="credentials">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> CPACF — T° 156 F° 452</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> C.A.M — T° 17 F° 35</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> Matrícula Federal — T° 712 F° 132</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> UBA — Facultad de Derecho, 2024</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> CPACF</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> C.A.M</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> Matrícula Federal</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> UBA — Facultad de Derecho</li>
       </ul>
       <p class="cta-line">¿Tenés una consulta? Escribime hoy y te respondo en el día.</p>
     </div>
@@ -479,7 +496,7 @@
     <div class="contact-info fade-up">
       <span class="eyebrow">Contacto</span>
       <h2>Hablemos de tu caso</h2>
-      <p>Atención en CABA y GBA, de forma presencial y virtual. Urgencias penales las 24 horas.</p>
+      <p>Atención en CABA y GBA, de forma presencial y virtual.<br>Lunes a viernes de 10 a 17 hs · Urgencias penales las 24 horas.</p>
       <div class="contact-links">
         <a href="https://wa.me/5491133304910?text=Hola%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20necesito%20hacer%20una%20consulta." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
@@ -521,7 +538,7 @@
 <footer>
   <div class="wrap">
     <div class="f-name">Dr. Martín Rotela & Asociados</div>
-    <div class="f-matriculas">CPACF T° 156 F° 452 · C.A.M T° 17 F° 35 · Matrícula Federal T° 712 F° 132</div>
+    <div class="f-matriculas">CPACF · C.A.M · Matrícula Federal</div>
     <div class="f-year">© 2026 — Todos los derechos reservados</div>
   </div>
 </footer>

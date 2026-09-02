@@ -169,7 +169,8 @@
   }
   .hero-eyebrow .line{width:36px; height:1px; background:var(--gold-500);}
   .hero h1{
-    color:var(--beige-100); font-size:clamp(38px, 5.2vw, 64px); line-height:1.06; font-weight:600;
+    color:var(--beige-100); font-size:clamp(34px, 4.6vw, 56px); line-height:1.1; font-weight:600;
+    text-transform:uppercase; letter-spacing:.01em;
   }
   .hero h1 em{color:var(--gold-300); font-style:italic;}
   .hero p.lede{
@@ -225,14 +226,25 @@
   .eyebrow{
     color:var(--gold-600); font-size:12px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px; display:block;
   }
-  .section-head h2{font-size:clamp(30px,3.6vw,42px); color:var(--navy-950);}
-  .section-head p{color:var(--ink-600); margin-top:16px; font-size:16px; max-width:520px;}
+  .section-head h2{font-size:clamp(30px,3.6vw,42px); color:var(--beige-100);}
+  .section-head p{color:#c8d0da; margin-top:16px; font-size:16px; max-width:520px;}
 
   .fade-up{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
   .fade-up.in{opacity:1; transform:translateY(0);}
 
   /* ---------- Areas ---------- */
-  .areas{background:var(--beige-100);}
+  .areas{position:relative; overflow:hidden;}
+  .areas .bg-photo{
+    position:absolute; inset:0;
+    background-image:url('areas-bg.jpg');
+    background-size:cover; background-position:center 20%;
+    transform:scale(1.05);
+  }
+  .areas .bg-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(10,24,38,.90) 0%, rgba(10,24,38,.86) 50%, rgba(10,24,38,.92) 100%);
+  }
+  .areas .wrap{position:relative; z-index:2;}
   .area-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
   .area-card{
     background:var(--beige-200); border:1px solid rgba(28,26,22,.08);
@@ -335,9 +347,7 @@
   footer .f-name{font-family:var(--serif); font-size:20px; color:var(--beige-100);}
   footer .f-matriculas{font-size:12.5px; line-height:1.8;}
   footer .f-year{font-size:12px; color:#5f7284; margin-top:6px;}
-  footer .f-credit{font-size:11.5px; color:#5f7284; margin-top:10px; opacity:.8;}
-  footer .f-credit a{color:#8fa0b0; text-decoration:none;}
-  footer .f-credit a:hover{text-decoration:underline;}
+
   /* ---------- WhatsApp floating button ---------- */
   .wa-float{
     position:fixed; bottom:26px; right:26px; z-index:90;
@@ -431,6 +441,8 @@
 </div>
 
 <section class="areas" id="areas">
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
   <div class="wrap">
     <div class="section-head fade-up">
       <span class="eyebrow">Áreas de práctica</span>
@@ -549,7 +561,6 @@
     <div class="f-matriculas">CPACF · C.A.M · Matrícula Federal</div>
     <div class="f-matriculas">Dr. José María Casullo 217, Morón, Buenos Aires</div>
     <div class="f-year">© 2026 — Todos los derechos reservados</div>
-    <div class="f-credit">Sitio web: <a href="https://wa.me/5491139090555?text=Hola%2C%20vi%20tu%20trabajo%20en%20esta%20p%C3%A1gina%20y%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">MR Tecnología</a></div>
   </div>
 </footer>
 

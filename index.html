@@ -206,7 +206,7 @@
     display:flex; align-items:center; justify-content:center;
     overflow:hidden;
   }
-  .seal-inner img{width:78%; height:auto;}
+  .seal-inner img{width:100%; height:100%; object-fit:cover; object-position:center 25%;}
 
   /* ---------- Urgency ribbon (signature element) ---------- */
   .ribbon{
@@ -226,25 +226,14 @@
   .eyebrow{
     color:var(--gold-600); font-size:12px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px; display:block;
   }
-  .section-head h2{font-size:clamp(30px,3.6vw,42px); color:var(--beige-100);}
-  .section-head p{color:#c8d0da; margin-top:16px; font-size:16px; max-width:520px;}
+  .section-head h2{font-size:clamp(30px,3.6vw,42px); color:var(--navy-950);}
+  .section-head p{color:var(--ink-600); margin-top:16px; font-size:16px; max-width:520px;}
 
   .fade-up{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
   .fade-up.in{opacity:1; transform:translateY(0);}
 
   /* ---------- Areas ---------- */
-  .areas{position:relative; overflow:hidden;}
-  .areas .bg-photo{
-    position:absolute; inset:0;
-    background-image:url('areas-bg.jpg');
-    background-size:cover; background-position:center 20%;
-    transform:scale(1.05);
-  }
-  .areas .bg-overlay{
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(10,24,38,.90) 0%, rgba(10,24,38,.86) 50%, rgba(10,24,38,.92) 100%);
-  }
-  .areas .wrap{position:relative; z-index:2;}
+  .areas{background:var(--beige-100);}
   .area-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
   .area-card{
     background:var(--beige-200); border:1px solid rgba(28,26,22,.08);
@@ -426,7 +415,7 @@
     <div class="hero-seal">
       <div class="seal-ring">
         <div class="seal-inner">
-          <img src="logo-mark.jpeg" alt="Escudo Dr. Martín Rotela">
+          <img src="areas-bg.jpg" alt="Dr. Martín Rotela">
         </div>
       </div>
     </div>
@@ -441,8 +430,6 @@
 </div>
 
 <section class="areas" id="areas">
-  <div class="bg-photo"></div>
-  <div class="bg-overlay"></div>
   <div class="wrap">
     <div class="section-head fade-up">
       <span class="eyebrow">Áreas de práctica</span>

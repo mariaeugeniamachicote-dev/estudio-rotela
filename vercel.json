@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "estudio-rotela.vercel.app"
+        }
+      ],
+      "destination": "https://www.estudiojuridicorotela.com.ar/$1",
+      "permanent": true
+    }
+  ]
+}

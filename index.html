@@ -30,9 +30,9 @@
   "email": "estudiojuridicorotela@gmail.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Dr. José María Casullo 217",
-    "addressLocality": "Morón",
-    "postalCode": "B1708",
+    "streetAddress": "Pedro Noguera 37, Piso 2, Dpto. 4",
+    "addressLocality": "San Antonio de Padua",
+    "postalCode": "B1718FUA",
     "addressRegion": "Buenos Aires",
     "addressCountry": "AR"
   },
@@ -301,6 +301,40 @@
   .credentials svg{width:16px; height:16px; stroke:var(--gold-300); flex-shrink:0; margin-top:3px;}
   .cta-line{margin-top:32px; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--gold-300);}
 
+
+  /* ---------- Opiniones ---------- */
+  .reviews{background:var(--beige-100);}
+  .reviews .section-head{margin-bottom:40px;}
+  .reviews-summary{display:flex; align-items:center; gap:12px; margin-top:18px; color:var(--ink-600); font-size:14.5px;}
+  .stars{display:inline-flex; gap:2px; color:var(--gold-500);}
+  .stars svg{width:17px; height:17px; fill:currentColor;}
+  .stars .off{color:rgba(28,26,22,.18);}
+  .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:start;}
+  .review{
+    background:#fff; border:1px solid rgba(28,26,22,.08); border-top:2px solid var(--gold-500);
+    padding:28px 26px 24px; display:flex; flex-direction:column; gap:14px;
+  }
+  .review-top{display:flex; align-items:center; gap:12px;}
+  .avatar{
+    width:42px; height:42px; border-radius:50%; flex-shrink:0;
+    background:var(--navy-950); color:var(--gold-300);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-size:20px; font-weight:600;
+  }
+  .review-name{font-weight:700; font-size:15px; color:var(--navy-950); line-height:1.2;}
+  .review-src{font-size:12.5px; color:var(--ink-600); display:flex; align-items:center; gap:5px; margin-top:2px;}
+  .review-src svg{width:12px; height:12px;}
+  .review-text{color:var(--ink-900); font-size:15px; line-height:1.7;}
+  .review-text.clamp{display:-webkit-box; -webkit-line-clamp:6; -webkit-box-orient:vertical; overflow:hidden;}
+  .review-more{align-self:flex-start; background:none; border:none; padding:0; cursor:pointer;
+    color:var(--gold-600); font-family:var(--sans); font-size:13.5px; font-weight:500; text-decoration:underline; text-underline-offset:3px;}
+  .review-more:focus-visible{outline:2px solid var(--gold-500); outline-offset:2px;}
+  .reviews-cta{margin-top:40px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .btn-navy{background:var(--navy-950); color:var(--beige-100);}
+  .btn-navy:hover{background:var(--navy-700); transform:translateY(-2px);}
+  .btn-line{border-color:rgba(28,26,22,.25); color:var(--navy-950);}
+  .btn-line:hover{border-color:var(--gold-600); color:var(--gold-600);}
+
   /* ---------- Contact ---------- */
   .contact{background:var(--beige-200);}
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
@@ -361,6 +395,10 @@
     .about-grid{grid-template-columns:1fr;}
     .photo-frame{max-width:280px; margin:0 auto;}
     .contact-grid{grid-template-columns:1fr; gap:44px;}
+    .review-grid{grid-template-columns:1fr;}
+  }
+  @media (min-width:901px) and (max-width:1100px){
+    .review-grid{grid-template-columns:repeat(2,1fr);}
   }
 </style>
 </head>
@@ -380,6 +418,7 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#areas">Áreas</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -394,6 +433,7 @@
   <a href="#inicio">Inicio</a>
   <a href="#areas">Áreas</a>
   <a href="#sobre-mi">Sobre mí</a>
+  <a href="#opiniones">Opiniones</a>
   <a href="#contacto">Contacto</a>
 </div>
 
@@ -494,6 +534,67 @@
   </div>
 </section>
 
+<section class="reviews" id="opiniones">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Opiniones</span>
+      <h2>Lo que dicen mis clientes</h2>
+      <div class="reviews-summary">
+        <span class="stars" aria-hidden="true" id="summaryStars"></span>
+        <span>Reseñas publicadas en Google</span>
+      </div>
+    </div>
+    <div class="review-grid" id="reviewGrid"></div>
+    <div class="reviews-cta fade-up">
+      <a class="btn btn-navy" id="btnDejarOpinion" href="#" target="_blank" rel="noopener">Dejá tu opinión en Google</a>
+      <a class="btn btn-line" id="btnVerOpiniones" href="#" target="_blank" rel="noopener">Ver todas en Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* =====================================================================
+     OPINIONES — PARA AGREGAR UNA NUEVA:
+     1) Copiá un bloque completo, desde la llave { hasta la llave } y la coma.
+     2) Pegalo PRIMERO en la lista (así la más nueva aparece primero).
+     3) Cambiá nombre, estrellas (1 a 5) y texto.
+        - Nombre: nombre + inicial del apellido con punto. Ej: "Laura G."
+        - El texto va entre comillas. Si adentro hay comillas, borralas.
+     ===================================================================== */
+  const OPINIONES = [
+    {
+      nombre: "Julio César C.",
+      estrellas: 5,
+      texto: "Después de pasar por 3 abogados que no supieron qué hacer, Martín me resolvió un problemón que parecía no tener salida. El mejor abogado penalista. 100% recomendable."
+    },
+    {
+      nombre: "Lombriz C.",
+      estrellas: 5,
+      texto: "Doctor Martín Rotela, simplemente un crack. Usted debería dar clases de cómo solucionar los problemas de manera rápida y eficiente. ¡Muchas gracias!"
+    },
+    {
+      nombre: "Xoana S.",
+      estrellas: 5,
+      texto: "Excelente atención por parte del Dr. Martín Rotela. Muestra un gran compromiso, profesionalismo y claridad desde la primera consulta. Respuestas rápidas y un asesoramiento transparente en todo momento. Me brindó un acompañamiento clave en un momento muy delicado. Su efectividad, predisposición y conocimiento en el fuero penal marcan la diferencia. Transmite mucha tranquilidad y solidez profesional. Muy recomendable."
+    },
+    {
+      nombre: "Santiago L.",
+      estrellas: 5,
+      texto: "Excelente atención y muy profesionales. Desde el primer momento el Dr. Rotela me brindó un trato muy cordial, me explicó todo con claridad y estuvo siempre atento a cada detalle. Se nota el compromiso y la seriedad con la que trabaja. Quedé muy conforme con la atención y con la forma de manejar todo el proceso. Sin dudas es un lugar que recomiendo y al que volvería a acudir en caso de necesitarlo."
+    },
+    {
+      nombre: "María Eugenia M.",
+      estrellas: 5,
+      texto: "Quiero destacar, además de su profesionalismo y conocimiento, la enorme contención que me brindó durante todo el proceso. En momentos en los que una situación legal puede generar mucha angustia e incertidumbre, encontrar un abogado que te escuche, te explique con claridad y te transmita tranquilidad hace una gran diferencia. Siempre sentí que mi situación fue tomada con seriedad, compromiso y empatía. Estoy muy agradecida por el acompañamiento y la confianza que me transmitió. Lo recomiendo totalmente."
+    },
+  ];
+
+  /* Enlaces de Google (ver guía para reemplazar el primero por el enlace de "Pedir reseñas") */
+  const LINK_DEJAR_OPINION = "https://www.google.com/maps/search/?api=1&query=Dr.+Mart%C3%ADn+Rotela+abogado+San+Antonio+de+Padua";
+  const LINK_VER_OPINIONES = "https://www.google.com/maps/search/?api=1&query=Dr.+Mart%C3%ADn+Rotela+abogado+San+Antonio+de+Padua";
+  /* ===================== NO HACE FALTA TOCAR NADA DE ACÁ PARA ABAJO ===================== */
+</script>
+
 <section class="contact" id="contacto">
   <div class="wrap contact-grid">
     <div class="contact-info fade-up">
@@ -501,9 +602,9 @@
       <h2>Hablemos de tu caso</h2>
       <p>Atención en CABA y GBA, de forma presencial y virtual.<br>Lunes a viernes de 10 a 17 hs · Urgencias penales las 24 horas.</p>
       <div class="contact-links">
-        <a href="https://www.google.com/maps/search/?api=1&query=Dr.+Jos%C3%A9+Mar%C3%ADa+Casullo+217%2C+Mor%C3%B3n%2C+Buenos+Aires" target="_blank" rel="noopener">
+        <a href="https://www.google.com/maps/search/?api=1&query=Pedro+Noguera+37%2C+San+Antonio+de+Padua%2C+Buenos+Aires" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.5-7-11.5A7 7 0 0 1 19 9.5C19 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          Dr. José María Casullo 217, Morón, Buenos Aires
+          Pedro Noguera 37, Piso 2 - Dpto. 4, San Antonio de Padua, Buenos Aires
         </a>
         <a href="https://wa.me/5491133304910?text=Hola%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20necesito%20hacer%20una%20consulta." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
@@ -546,7 +647,7 @@
   <div class="wrap">
     <div class="f-name">Dr. Martín Rotela & Asociados</div>
     <div class="f-matriculas">CPACF · C.A.M · Matrícula Federal</div>
-    <div class="f-matriculas">Dr. José María Casullo 217, Morón, Buenos Aires</div>
+    <div class="f-matriculas">Pedro Noguera 37, Piso 2 - Dpto. 4, San Antonio de Padua, Buenos Aires</div>
     <div class="f-year">© 2026 — Todos los derechos reservados</div>
   </div>
 </footer>
@@ -569,6 +670,40 @@
   hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
   mobileCloseBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+
+  // Opiniones
+  (function(){
+    const star = '<svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>';
+    const gLogo = '<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 7l7.4 5.7c4.3-4 6.9-9.9 6.9-17.2z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.3.8-4.7l-7.8-6C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.8-5.8l-7.4-5.7c-2.1 1.4-4.8 2.3-8.4 2.3-6.3 0-11.6-4.2-13.5-10l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg>';
+    const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const starsHtml = n => { let h=''; for(let i=1;i<=5;i++) h += i<=n ? star : star.replace('<svg','<svg class="off"'); return h; };
+    const grid = document.getElementById('reviewGrid');
+    if (!grid || typeof OPINIONES === 'undefined') return;
+    const lista = OPINIONES.filter(o => o && o.nombre && o.texto);
+    grid.innerHTML = lista.map(o => {
+      const n = Math.max(1, Math.min(5, parseInt(o.estrellas,10) || 5));
+      return '<article class="review fade-up">' +
+        '<div class="review-top"><div class="avatar" aria-hidden="true">' + esc(o.nombre.trim().charAt(0).toUpperCase()) + '</div>' +
+        '<div><div class="review-name">' + esc(o.nombre) + '</div><div class="review-src">' + gLogo + 'Reseña de Google</div></div></div>' +
+        '<span class="stars" role="img" aria-label="' + n + ' de 5 estrellas">' + starsHtml(n) + '</span>' +
+        '<p class="review-text clamp">' + esc(o.texto) + '</p>' +
+        '<button class="review-more" type="button" hidden>Leer más</button>' +
+        '</article>';
+    }).join('');
+    const prom = lista.length ? Math.round(lista.reduce((a,o)=>a+(parseInt(o.estrellas,10)||5),0)/lista.length) : 5;
+    document.getElementById('summaryStars').innerHTML = starsHtml(prom);
+    grid.querySelectorAll('.review').forEach(card => {
+      const p = card.querySelector('.review-text'), b = card.querySelector('.review-more');
+      if (p.scrollHeight > p.clientHeight + 2) b.hidden = false;
+      b.addEventListener('click', () => {
+        const abierto = p.classList.toggle('clamp') === false;
+        b.textContent = abierto ? 'Leer menos' : 'Leer más';
+      });
+    });
+    document.getElementById('btnDejarOpinion').href = LINK_DEJAR_OPINION;
+    document.getElementById('btnVerOpiniones').href = LINK_VER_OPINIONES;
+  })();
 
   // Fade-up on scroll
   const observer = new IntersectionObserver((entries) => {
